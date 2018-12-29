@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var db = require('./db');
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 3001;
 
 app.use(function (req, res, next) {
   // Website you wish to allow to connect
@@ -17,8 +17,8 @@ app.use(function (req, res, next) {
   return next();
 });
 
-var ProjectsController = require('./user/ProjectsController');
-express.use('/projects', ProjectsController);
+var ProjectsController = require('./controllers/projects-controller');
+app.use('/projects', ProjectsController);
 
 var server = app.listen(port, function() {
   console.log('Express server listening on port ' + port);
